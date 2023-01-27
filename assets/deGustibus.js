@@ -1,3 +1,5 @@
+const toFetch = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+
 const myFetcher = async function (request) {
   try {
     let myRes = await fetch(request);
@@ -19,7 +21,7 @@ const singerDisplayer = async function (url) {
     <div class="card" id="myCard" style="width: 18rem">
           <img src=${song[0].album.cover_big} class="card-img-top" alt="image of ${song[0].album.title}" />
           <div class="card-body">
-            <h5 class="card-title">${song[0].title}</h5>
+            <h5 class="card-title" deezRank=${song[0].rank}>${song[0].title}</h5>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Album: ${song[0].album.title}</li>
@@ -45,7 +47,7 @@ const myFavDisplayer = async function (url) {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">${song[0].title}</h5>
+            <h5 class="card-title" deezRank=${song[0].rank}>${song[0].title}</h5>
             <p class="card-text">"When the Levee Breaks" was re-worked by English rock group Led Zeppelin as the last 
             song on their untitled fourth album. Singer Robert Plant used many of the original lyrics and the songwriting 
             is credited to Memphis Minnie and the individual members of Led Zeppelin.[1] Many other artists have performed 
@@ -87,29 +89,52 @@ const innerCarousel = async function (url1, url2, url3) {
     </div>
     `;
 
-  // create an object with the rank of the differents albums
-  const ranking = {};
-  ranking.song1 = song1[0].rank;
-  ranking.song2 = song2[0].rank;
-  ranking.song3 = song3[0].rank;
-  console.log(ranking);
+  // call function to create the array for the ranking alert
+  const rankArray = await myAlertRank();
+  await sortedRank(rankArray);
+};
+
+const myAlertRank = async function () {
+  const mySongsTitle = document.querySelectorAll("h5");
+  console.log(mySongsTitle);
+  const rankArray = [];
+  mySongsTitle.forEach((item) => {
+    rankArray.push({
+      title: item.innerText,
+      rank: parseInt(item.getAttribute("deezRank")),
+    });
+  });
+  return rankArray;
+};
+
+const sortedRank = async function (arr) {
+  let ordered = arr.sort((a, b) => {
+    return a.rank - b.rank;
+  });
+  console.log("ordered", ordered);
+
+  // get the reference to the alert ol
+  const alertRank = document.querySelector("#rankList");
+  console.log(alertRank);
+  ordered.forEach((song) => {
+    alertRank.innerHTML += `
+    <li>${song.title} with a score of: ${song.rank}</li>
+    `;
+  });
+  alertRank.style.display = "block";
 };
 
 const firstSectionFetcher = function () {
-  singerDisplayer("https://striveschool-api.herokuapp.com/api/deezer/search?q=BringItOnHome");
-  singerDisplayer("https://striveschool-api.herokuapp.com/api/deezer/search?q=SinceI'veBeenLovingYou");
-  singerDisplayer("https://striveschool-api.herokuapp.com/api/deezer/search?q=D'yerMak'er");
-  singerDisplayer("https://striveschool-api.herokuapp.com/api/deezer/search?q=AchillesLastStand");
+  singerDisplayer(toFetch + "BringItOnHome");
+  singerDisplayer(toFetch + "SinceI'veBeenLovingYou");
+  singerDisplayer(toFetch + "D'yerMak'er");
+  singerDisplayer(toFetch + "AchillesLastStand");
 };
 
 const stackingFunctions = function () {
   firstSectionFetcher();
-  myFavDisplayer("https://striveschool-api.herokuapp.com/api/deezer/search?q=WhenTheLeveeBreaks");
-  innerCarousel(
-    "https://striveschool-api.herokuapp.com/api/deezer/search?q=LedZeppelinIV",
-    "https://striveschool-api.herokuapp.com/api/deezer/search?q=LetThereBeRock",
-    "https://striveschool-api.herokuapp.com/api/deezer/search?q=StartMeUp"
-  );
+  myFavDisplayer(toFetch + "WhenTheLeveeBreaks");
+  innerCarousel(toFetch + "LedZeppelinIV", toFetch + "LetThereBeRock", toFetch + "StartMeUp");
 };
 
 window.onload = stackingFunctions();
