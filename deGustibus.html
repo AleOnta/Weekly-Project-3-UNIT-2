@@ -10,6 +10,7 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <style>
       #myCard {
         padding: 0;
@@ -19,19 +20,84 @@
       #alertContainer {
         margin-top: 57px;
         z-index: 999;
-        /* display: none; */
         transition: 2s;
+      }
+
+      #myRank {
+        right: 1%;
+        bottom: 60%;
+      }
+
+      #mySongList {
+        right: 1%;
+        bottom: 54%;
+      }
+
+      i {
+        font-size: 1.6em;
+      }
+
+      .appear {
+        display: block !important;
+        transition: 3s;
+      }
+
+      .modal-dialog {
+        max-width: 700px !important;
       }
     </style>
   </head>
   <body class="position-relative">
-    <div id="alertContainer" class="alert alert-info position-absolute w-100" role="alert">
+    <div id="alertContainer" class="alert alert-info position-fixed w-100 d-none" role="alert">
       Here is the rank of the songs shown in this page:
       <ol id="rankList"></ol>
     </div>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-info position-fixed"
+      id="mySongList"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      <i class="bi bi-card-list"></i>
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Songs & Album recap:</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex justify-content-around">
+            <div id="modalAlbum">
+              <h4>Quoted albums:</h4>
+              <ul id="albumsRecap"></ul>
+            </div>
+            <div id="modalSongs">
+              <h4>Quoted songs:</h4>
+              <ul id="songsRecap"></ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Start of the NavBar  -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary mb-5">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img src="./assets/images/logo.svg" alt="Bootstrap" width="30" height="24" />
@@ -139,6 +205,9 @@
         </div>
       </div>
       <!-- End of the Carousel-->
+      <button type="button" class="btn btn-info d-flex position-fixed" id="myRank">
+        <i class="bi bi-list-ol"></i>
+      </button>
     </main>
 
     <script src="./assets/deGustibus.js"></script>

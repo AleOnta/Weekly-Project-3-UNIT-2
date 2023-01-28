@@ -1,4 +1,6 @@
 const toFetch = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+const quotedAlbums = [];
+const quotedSongs = [];
 
 const myFetcher = async function (request) {
   try {
@@ -6,7 +8,8 @@ const myFetcher = async function (request) {
 
     if (myRes.ok) {
       let resJSON = await myRes.json();
-
+      quotedAlbums.push(resJSON.data[0].album.title);
+      quotedSongs.push(resJSON.data[0].title);
       return resJSON.data;
     }
   } catch (err) {}
@@ -96,7 +99,6 @@ const innerCarousel = async function (url1, url2, url3) {
 
 const myAlertRank = async function () {
   const mySongsTitle = document.querySelectorAll("h5");
-  console.log(mySongsTitle);
   const rankArray = [];
   mySongsTitle.forEach((item) => {
     rankArray.push({
@@ -111,18 +113,53 @@ const sortedRank = async function (arr) {
   let ordered = arr.sort((a, b) => {
     return a.rank - b.rank;
   });
-  console.log("ordered", ordered);
 
   // get the reference to the alert ol
   const alertRank = document.querySelector("#rankList");
-  console.log(alertRank);
   ordered.forEach((song) => {
     alertRank.innerHTML += `
     <li>${song.title} with a score of: ${song.rank}</li>
     `;
   });
-  alertRank.style.display = "block";
 };
+
+// create a variable storing the reference to the button for the ranking
+const rankButton = document.getElementById("myRank");
+// create a function to toggle a class into the rankingDiv
+const rankDisplayer = function () {
+  const myAlertDiv = document.getElementById("alertContainer");
+  myAlertDiv.classList.toggle("appear");
+};
+// add event listener to the button, on click invoke function
+rankButton.addEventListener("click", rankDisplayer);
+
+function removeDuplicates(arr) {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+
+const modalConstructor = function () {
+  const albums = removeDuplicates(quotedAlbums);
+  const songs = quotedSongs;
+
+  const albumList = document.getElementById("albumsRecap");
+  albumList.innerHTML = "";
+  albums.forEach((album) => {
+    albumList.innerHTML += `
+      <li>${album}</li>
+      `;
+  });
+
+  const songList = document.getElementById("songsRecap");
+  songList.innerHTML = "";
+  songs.forEach((song) => {
+    songList.innerHTML += `
+      <li>${song}</li>
+      `;
+  });
+};
+
+const modalReference = document.getElementById("mySongList");
+modalReference.addEventListener("click", modalConstructor);
 
 const firstSectionFetcher = function () {
   singerDisplayer(toFetch + "BringItOnHome");
