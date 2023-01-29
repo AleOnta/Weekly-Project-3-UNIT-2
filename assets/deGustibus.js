@@ -188,7 +188,7 @@ const lzToFetch = [
   "StairwayToHeaven",
   "WholeLottaLove",
   "RambleOn",
-  "D'yerMak'er",
+  "NoQuarter",
 ];
 
 let randomFetch = [];
