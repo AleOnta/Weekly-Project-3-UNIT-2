@@ -1,0 +1,159 @@
+#myCard {
+  padding: 0;
+  margin: 10px;
+  border: 2px solid $lightCoral;
+  -webkit-box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.7);
+  box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.7);
+
+  @media screen and (max-width: 450px) {
+    margin: 10px 0;
+  }
+
+  img {
+    border-bottom: 2px solid $lightCoral;
+  }
+
+  h5 {
+    font: {
+      size: 1em;
+      weight: 700;
+    }
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media screen and (max-width: 575px) {
+      font-size: 0.8em;
+      margin-bottom: 0;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 0.7em;
+    }
+    @media screen and (max-width: 380px) {
+      font-size: 0.5em;
+    }
+  }
+
+  ul {
+    border: none;
+    li {
+      font: {
+        size: 0.9em;
+        weight: 400;
+      }
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media screen and (max-width: 575px) {
+        font-size: 0.7em;
+      }
+      @media screen and (max-width: 450px) {
+        font-size: 0.6em;
+      }
+      @media screen and (max-width: 380px) {
+        font-size: 0.5em;
+      }
+    }
+  }
+
+  .cardButton {
+    background-color: $lightCoral;
+    @media screen and (max-width: 500px) {
+      width: auto;
+      height: 30px;
+    }
+    @media screen and (max-width: 430px) {
+      height: 25px;
+    }
+
+    a {
+      text-decoration: none;
+      @media screen and (max-width: 575px) {
+        font-size: 0.7em;
+      }
+      @media screen and (max-width: 450px) {
+        font-size: 0.6em;
+      }
+      @media screen and (max-width: 380px) {
+        font-size: 0.5em;
+      }
+    }
+  }
+}
+
+// SECOND CARD - FAVOURITE SONG:
+
+#favCard {
+  border: 2px solid $lightCoral;
+  -webkit-box-shadow: 3px 5px 6px 2px rgba(71, 71, 71, 0.7);
+  box-shadow: 3px 5px 6px 2px rgba(71, 71, 71, 0.7);
+
+  img {
+    width: 100%;
+    @media screen and (min-width: 1200px) {
+      width: auto;
+    }
+  }
+
+  #favText {
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      max-width: 500px;
+      height: 230px;
+    }
+    @media screen and (min-width: 992px) {
+      max-width: 500px;
+      height: 310px;
+    }
+    @media screen and (min-width: 1200px) {
+      max-width: none;
+      height: 100%;
+    }
+  }
+
+  h5 {
+    font: {
+      size: 1.5em;
+      weight: 700;
+    }
+    @media screen and (max-width: 768px) {
+      font: {
+        size: 1.1em;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      font: {
+        size: 0.9em;
+      }
+    }
+  }
+
+  #songDesc {
+    overflow: hidden;
+    height: 51%;
+
+    @media screen and (max-width: 768px) {
+      font: {
+        size: 0.8em;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      height: 150px;
+      font: {
+        size: 0.7em;
+      }
+    }
+  }
+
+  #update {
+    @media screen and (max-width: 400px) {
+      font: {
+        size: 0.8em;
+      }
+    }
+  }
+}

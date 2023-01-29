@@ -1,0 +1,43 @@
+footer {
+  background-color: $lightCoral;
+
+  #topFooter {
+    padding: 5px;
+
+    h5 {
+      font: {
+        size: 0.7em;
+      }
+      @media screen and (min-width: 490px) {
+        font-size: 0.9em;
+      }
+      @media screen and (min-width: 992px) {
+        font-size: 1.2em;
+      }
+    }
+
+    p {
+      color: black;
+      font: {
+        size: 0.6em;
+      }
+      @media screen and (min-width: 490px) {
+        font-size: 0.8em;
+      }
+      @media screen and (min-width: 992px) {
+        font-size: 0.9em;
+      }
+    }
+  }
+  #bottomFooter {
+    background-color: coral;
+
+    font-size: 0.8em;
+  }
+  @media screen and (min-width: 490px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 992px) {
+    font-size: 1.1em;
+  }
+}

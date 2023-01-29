@@ -21,18 +21,22 @@ const singerDisplayer = async function (url) {
 
   myFirstSection.innerHTML += `
   <div class="col d-flex justify-content-center">
-    <div class="card" id="myCard" style="width: 18rem">
+    <div class="card bg-dark-subtle" id="myCard" style="max-width: 20rem">
           <img src=${song[0].album.cover_big} class="card-img-top" alt="image of ${song[0].album.title}" />
           <div class="card-body">
             <h5 class="card-title" deezRank=${song[0].rank}>${song[0].title}</h5>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Album: ${song[0].album.title}</li>
+          <ul class="list-group list-group-flush bg-body-secondary">
+            <li class="list-group-item bg-secondary-subtle">Album: ${song[0].album.title}</li>
           </ul>
-          <div class="card-body">
-            <a href=${song[0].link} class="card-link">Listen Now</a>
+          <div class="card-body p-2 d-flex justify-content-center">
+            <button type="button" class="btn cardButton d-flex align-items-center">
+              <a class="text-light" href=${song[0].link} target="_blank">
+                Listen Now
+              </a>
+            </button>
           </div>
-        </div>
+      </div>
   </div>
     `;
 };
@@ -43,19 +47,25 @@ const myFavDisplayer = async function (url) {
 
   myFavSection.innerHTML = `
   <div class="col-12 d-flex justify-content-center my-5">
-    <div class="card mb-3">
+    <div class="card mb-3 bg-dark-subtle" id="favCard">
       <div class="row g-0">
         <div class="col-md-4">
           <img src=${song[0].album.cover_big} class="img-fluid rounded-start" alt="image of ${song[0].album.title}">
         </div>
         <div class="col-md-8">
-          <div class="card-body">
+          <div class="card-body d-md-flex flex-column justify-content-around " id="favText">
             <h5 class="card-title" deezRank=${song[0].rank}>${song[0].title}</h5>
-            <p class="card-text">"When the Levee Breaks" was re-worked by English rock group Led Zeppelin as the last 
+            <p class="card-text" id="songDesc">
+            "When the Levee Breaks" was re-worked by English rock group Led Zeppelin as the last 
             song on their untitled fourth album. Singer Robert Plant used many of the original lyrics and the songwriting 
-            is credited to Memphis Minnie and the individual members of Led Zeppelin.[1] Many other artists have performed 
-            and recorded versions of the song.</p>
-            <p class="card-text"><small class="text-muted">Last updated 1971</small></p>
+            is credited to Memphis Minnie and the individual members of Led Zeppelin. Many other artists have performed 
+            and recorded versions of the song.
+            Led Zeppelin recorded "When the Levee Breaks" for their untitled fourth album. When considering material for the 
+            group to record, singer Robert Plant suggested the Kansas Joe McCoy and Memphis Minnie song. Jimmy Page 
+            commented that while Plant's lyrics identified with the original, he developed a new guitar riff that set it apart.
+            However, it is John Bonham's drumming that is usually noted as the defining characteristic of the song.
+            </p>
+            <p class="card-text" id="update"><small class="text-muted">Last updated 1971</small></p>
           </div>
         </div>
       </div>
@@ -111,27 +121,28 @@ const myAlertRank = async function () {
 
 const sortedRank = async function (arr) {
   let ordered = arr.sort((a, b) => {
-    return a.rank - b.rank;
+    return b.rank - a.rank;
   });
 
   // get the reference to the alert ol
   const alertRank = document.querySelector("#rankList");
   ordered.forEach((song) => {
     alertRank.innerHTML += `
-    <li>${song.title} with a score of: ${song.rank}</li>
+    <li class="d-flex align-items-center songRanked">${song.title} with a score of <i class="bi bi-arrow-right mx-3"></i> ${song.rank} <i class="bi bi-headphones mx-3"></i></li>
     `;
   });
 };
 
 // create a variable storing the reference to the button for the ranking
 const rankButton = document.getElementById("myRank");
-// create a function to toggle a class into the rankingDiv
+// create a function to add / remove opacity to the alert depending on it's value
 const rankDisplayer = function () {
-  const myAlertDiv = document.getElementById("alertContainer");
-  myAlertDiv.classList.toggle("appear");
+  const alertDiv = document.getElementById("alertContainer");
+  alertDiv.classList.toggle("shown");
 };
+
 // add event listener to the button, on click invoke function
-rankButton.addEventListener("click", rankDisplayer);
+rankButton.onclick = rankDisplayer;
 
 function removeDuplicates(arr) {
   return arr.filter((item, index) => arr.indexOf(item) === index);
@@ -164,7 +175,7 @@ modalReference.addEventListener("click", modalConstructor);
 const firstSectionFetcher = function () {
   singerDisplayer(toFetch + "BringItOnHome");
   singerDisplayer(toFetch + "SinceI'veBeenLovingYou");
-  singerDisplayer(toFetch + "D'yerMak'er");
+  singerDisplayer(toFetch + "DazedAndConfused");
   singerDisplayer(toFetch + "AchillesLastStand");
 };
 

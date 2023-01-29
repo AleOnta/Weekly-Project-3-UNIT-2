@@ -1,0 +1,334 @@
+body {
+  font-family: "Sofia Sans", sans-serif;
+}
+
+.row {
+  max-width: 1920px;
+}
+
+i {
+  font-size: 1.6em;
+}
+
+.modal-dialog {
+  max-width: 700px !important;
+}
+
+#LZContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 1199px) {
+  #LZContainer {
+    margin-top: 120px;
+  }
+}
+#LZContainer img {
+  width: 60%;
+}
+
+.alertContainer {
+  text-align: center;
+  font-size: 0.7em;
+  font-weight: 700;
+  width: 80%;
+  top: 40px;
+  left: 10%;
+  right: 10%;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+@media screen and (min-width: 500px) {
+  .alertContainer {
+    width: 70%;
+    left: 15%;
+    right: 15%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .alertContainer {
+    width: 60%;
+    left: 20%;
+    right: 20%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .alertContainer {
+    font-size: 1em;
+    top: 60px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .alertContainer {
+    font-size: 1.2em;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .alertContainer {
+    font-size: 1.4em;
+  }
+}
+.alertContainer #rankList {
+  padding: 0;
+  margin-top: 10px;
+}
+.alertContainer #rankList li {
+  font-size: 0.7em;
+  font-weight: 400;
+}
+.alertContainer #rankList li i {
+  font-size: 1.2em;
+}
+@media screen and (min-width: 768px) {
+  .alertContainer #rankList li {
+    font-size: 1em;
+  }
+}
+
+.shown {
+  opacity: 1;
+}
+
+#navbar {
+  background-color: rgb(255, 144, 103) !important;
+}
+#navbar #navList > li {
+  border-radius: 15px;
+  background-color: coral;
+  margin: 10px;
+  padding: 0 5px;
+}
+#navbar .dropdown-menu {
+  background-color: rgb(255, 144, 103);
+}
+
+#myCard {
+  padding: 0;
+  margin: 10px;
+  border: 2px solid rgb(255, 144, 103);
+  box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.7);
+}
+@media screen and (max-width: 450px) {
+  #myCard {
+    margin: 10px 0;
+  }
+}
+#myCard img {
+  border-bottom: 2px solid rgb(255, 144, 103);
+}
+#myCard h5 {
+  font-size: 1em;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (max-width: 575px) {
+  #myCard h5 {
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 450px) {
+  #myCard h5 {
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 380px) {
+  #myCard h5 {
+    font-size: 0.5em;
+  }
+}
+#myCard ul {
+  border: none;
+}
+#myCard ul li {
+  font-size: 0.9em;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (max-width: 575px) {
+  #myCard ul li {
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 450px) {
+  #myCard ul li {
+    font-size: 0.6em;
+  }
+}
+@media screen and (max-width: 380px) {
+  #myCard ul li {
+    font-size: 0.5em;
+  }
+}
+#myCard .cardButton {
+  background-color: rgb(255, 144, 103);
+}
+@media screen and (max-width: 500px) {
+  #myCard .cardButton {
+    width: auto;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 430px) {
+  #myCard .cardButton {
+    height: 25px;
+  }
+}
+#myCard .cardButton a {
+  text-decoration: none;
+}
+@media screen and (max-width: 575px) {
+  #myCard .cardButton a {
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 450px) {
+  #myCard .cardButton a {
+    font-size: 0.6em;
+  }
+}
+@media screen and (max-width: 380px) {
+  #myCard .cardButton a {
+    font-size: 0.5em;
+  }
+}
+
+#favCard {
+  border: 2px solid rgb(255, 144, 103);
+  box-shadow: 3px 5px 6px 2px rgba(71, 71, 71, 0.7);
+}
+#favCard img {
+  width: 100%;
+}
+@media screen and (min-width: 1200px) {
+  #favCard img {
+    width: auto;
+  }
+}
+#favCard #favText {
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  #favCard #favText {
+    max-width: 500px;
+    height: 230px;
+  }
+}
+@media screen and (min-width: 992px) {
+  #favCard #favText {
+    max-width: 500px;
+    height: 310px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #favCard #favText {
+    max-width: none;
+    height: 100%;
+  }
+}
+#favCard h5 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+@media screen and (max-width: 768px) {
+  #favCard h5 {
+    font-size: 1.1em;
+  }
+}
+@media screen and (max-width: 400px) {
+  #favCard h5 {
+    font-size: 0.9em;
+  }
+}
+#favCard #songDesc {
+  overflow: hidden;
+  height: 51%;
+}
+@media screen and (max-width: 768px) {
+  #favCard #songDesc {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 400px) {
+  #favCard #songDesc {
+    height: 150px;
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 400px) {
+  #favCard #update {
+    font-size: 0.8em;
+  }
+}
+
+footer {
+  background-color: rgb(255, 144, 103);
+}
+footer #topFooter {
+  padding: 5px;
+}
+footer #topFooter h5 {
+  font-size: 0.7em;
+}
+@media screen and (min-width: 490px) {
+  footer #topFooter h5 {
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 992px) {
+  footer #topFooter h5 {
+    font-size: 1.2em;
+  }
+}
+footer #topFooter p {
+  color: black;
+  font-size: 0.6em;
+}
+@media screen and (min-width: 490px) {
+  footer #topFooter p {
+    font-size: 0.8em;
+  }
+}
+@media screen and (min-width: 992px) {
+  footer #topFooter p {
+    font-size: 0.9em;
+  }
+}
+footer #bottomFooter {
+  background-color: coral;
+  font-size: 0.8em;
+}
+@media screen and (min-width: 490px) {
+  footer {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 992px) {
+  footer {
+    font-size: 1.1em;
+  }
+}
+
+#myRank {
+  right: 1%;
+  bottom: 60%;
+  z-index: 999;
+  background-color: rgb(255, 144, 103);
+  border: 1px solid black;
+  box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.7);
+}
+
+#mySongList {
+  right: 1%;
+  bottom: 54%;
+  z-index: 999;
+  background-color: rgb(255, 144, 103);
+  border: 1px solid black;
+  box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.7);
+}/*# sourceMappingURL=deGustibus.css.map */

@@ -1,0 +1,14 @@
+#navbar {
+  background-color: $lightCoral !important;
+
+  #navList > li {
+    border-radius: 15px;
+    background-color: coral;
+    margin: 10px;
+    padding: 0 5px;
+  }
+
+  .dropdown-menu {
+    background-color: $lightCoral;
+  }
+}
