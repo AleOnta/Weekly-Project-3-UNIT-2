@@ -173,11 +173,29 @@ const modalReference = document.getElementById("mySongList");
 modalReference.addEventListener("click", modalConstructor);
 
 const firstSectionFetcher = function () {
-  singerDisplayer(toFetch + "BringItOnHome");
-  singerDisplayer(toFetch + "SinceI'veBeenLovingYou");
-  singerDisplayer(toFetch + "DazedAndConfused");
-  singerDisplayer(toFetch + "AchillesLastStand");
+  singerDisplayer(toFetch + lzToFetch[randomFetch[0]]);
+  singerDisplayer(toFetch + lzToFetch[randomFetch[1]]);
+  singerDisplayer(toFetch + lzToFetch[randomFetch[2]]);
+  singerDisplayer(toFetch + lzToFetch[randomFetch[3]]);
 };
+
+// I've used this method because i realized i just love too many Led Zeppelin's songs...
+const lzToFetch = [
+  "BringItOnHome",
+  "SinceI'veBeenLovingYou",
+  "DazedAndConfused",
+  "AchillesLastStand",
+  "StairwayToHeaven",
+  "WholeLottaLove",
+  "RambleOn",
+  "D'yerMak'er",
+];
+
+let randomFetch = [];
+while (randomFetch.length < 4) {
+  let r = Math.floor(Math.random() * 7) + 1;
+  if (randomFetch.indexOf(r) === -1) randomFetch.push(r);
+}
 
 const stackingFunctions = function () {
   firstSectionFetcher();
